@@ -1,0 +1,52 @@
+// COMANDOS: 
+// crear un proyecto
+ng new nombre-proyecto --no-standalone
+	CSS
+	No
+// instalar angular material
+• ng add @angular/material
+• Responder todos Enter
+
+// en tsconfig.json
+"strictPropertyInitialization": false,// ADD
+
+
+// AHORA PARA CREAR MODEL, COMPONENTS Y SERVICES
+
+ng g class model/mascota
+ng g s service/mascota --skip-tests
+
+// Luego importar HttpClientModule en app.module.ts
+// Implementar el servicio con las rutas del backend (list, listById, insert, update, delete y adicionales setList, getList)
+
+// Ahora los componentes
+ng g c component/mascota --skip-tests
+ng g c component/mascota/mascota-listar --skip-tests
+ng g c component/navbar --skip-tests
+ng g c component/mascota/mascota-editar-crear --skip-tests
+
+// Empezamos con el navbar (copy y page)
+
+// Luego modificamos el routing module
+
+const routes: Routes = [
+  {
+    path: 'mascotas', component: MascotaComponent, children: [
+      {
+        path: 'nuevo', component: MascotaEditarCrearComponent
+      },
+      {
+        path: 'listar', component: MascotaListarComponent
+      },
+      {
+        path: 'editar/:id', component: MascotaEditarCrearComponent
+      }
+    ]
+  }
+  
+];
+
+// Luego importar todos los modulos (copy y page del app.modules
+
+// Ahora ya implementar el mascota-listar y el mascota que llama el listar.
+// 
